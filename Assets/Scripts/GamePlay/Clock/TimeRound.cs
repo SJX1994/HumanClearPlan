@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Chronos;
 using Chronos.Example;
 using UnityEngine.UI;
 using TMPro;
@@ -42,9 +41,9 @@ public class TimeRound : ExampleBaseBehaviour
             if(isRecording == false)
             {
                 
-                Debug.Log("结束回放"+time.time);
+               // Debug.Log("结束回放"+time.time);
                 buttonEndReplay.onClick.Invoke();
-                Debug.Log("开始录制"+time.time);
+               // Debug.Log("开始录制"+time.time);
                 buttonStartRecord.onClick.Invoke();
                 isRecording = true;
                 // Wait for the interval
@@ -53,9 +52,9 @@ public class TimeRound : ExampleBaseBehaviour
             if(isRecording == true)
             {
                 roundTimer = 0;
-                Debug.Log("停止录制"+time.time);
+               // Debug.Log("停止录制"+time.time);
                 buttonEndRecord.onClick.Invoke();
-                Debug.Log("开始回放"+time.time);
+               // Debug.Log("开始回放"+time.time);
                 buttonStartReplay.onClick.Invoke();
                 isRecording = false;
                 // Wait for the interval

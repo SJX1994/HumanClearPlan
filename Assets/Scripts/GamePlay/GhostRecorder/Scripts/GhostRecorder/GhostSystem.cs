@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using Chronos;
 using System.Threading;
 using SyrupPlayer;
+using CleverCrow.Fluid.StatsSystem;
 public class GhostSystem : MonoBehaviour
 {
     private Thread thread;
@@ -15,6 +16,7 @@ public class GhostSystem : MonoBehaviour
     private GhostActor[] ghostActors;
 
     private FollowPlayer[] cameraFollows;
+    private CharacterExample[] characterExample;
     // public Transform playerControlled;
     // public Transform playerGhost;
     private Volume volume; 
@@ -40,6 +42,7 @@ public class GhostSystem : MonoBehaviour
         recorders = FindObjectsOfType<GhostRecorder>();
         ghostActors = FindObjectsOfType<GhostActor>();
         cameraFollows = FindObjectsOfType<FollowPlayer>();
+        characterExample = FindObjectsOfType<CharacterExample>();
         CameraFollowGhost(true);
         PostProcessing(false);
       
@@ -89,7 +92,13 @@ public class GhostSystem : MonoBehaviour
             vignette.intensity.value = 0.1f;
         }
     }
- 
+    void ReflashHitEvent()
+    {
+        foreach(CharacterExample obj in characterExample)
+        {
+            obj.hitOnce = false;
+        }
+    }
     void ResetPlayer(bool m_isRecording)
     {
         GameObject[] playerObjs = GameObject.FindGameObjectsWithTag("Player");
@@ -120,6 +129,10 @@ public class GhostSystem : MonoBehaviour
             Debug.LogError("no tag");
         }
     }
+    void SetMusic(bool m_isRecording)
+    {
+        musicClock.localTimeScale = m_isRecording ? 1.5f : 0.5f;
+    }
     private IEnumerator WaitAndPrint(float waitTime,GameObject playerObj)
     {
         //while (true)
@@ -142,8 +155,9 @@ public class GhostSystem : MonoBehaviour
         CameraFollowGhost(true);
         GhostBack(true);
         PostProcessing(true);
-        
         ResetPlayer(true);
+        ReflashHitEvent();
+        SetMusic(false);
     }
 
     public void StopRecording()
@@ -158,6 +172,7 @@ public class GhostSystem : MonoBehaviour
         GhostBack(false);
         PostProcessing(false);
         ResetPlayer(false);
+        SetMusic(false);
     }
 
     public void StartReplay()
@@ -178,7 +193,7 @@ public class GhostSystem : MonoBehaviour
         PostProcessing(false);
         GhostBack(false);
         ResetPlayer(false);
-        
+        SetMusic(true);
     }
 
     public void StopReplay()
@@ -200,6 +215,7 @@ public class GhostSystem : MonoBehaviour
         PostProcessing(false);
         GhostBack(false);
         ResetPlayer(false);
+        SetMusic(false);
         
     }
 

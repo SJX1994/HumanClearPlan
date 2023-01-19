@@ -18,7 +18,7 @@ MonoBehaviour:
     - definition: {fileID: 11400000, guid: 3cf3e661c93fb496ca382be87b943584, type: 2}
       value:
         _valueInt:
-          value: 5
+          value: 3
         _valueIntCurve:
           value:
             serializedVersion: 2
@@ -40,27 +40,6 @@ MonoBehaviour:
       value:
         _valueInt:
           value: 20
-        _valueIntCurve:
-          value:
-            serializedVersion: 2
-            m_Curve: []
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-        _valueFloat:
-          value: 0
-        _valueFloatCurve:
-          value:
-            serializedVersion: 2
-            m_Curve: []
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-        type: 0
-    - definition: {fileID: 11400000, guid: 936f379c4beb54de0a5ce14696811553, type: 2}
-      value:
-        _valueInt:
-          value: 0
         _valueIntCurve:
           value:
             serializedVersion: 2

@@ -85,7 +85,7 @@ public class JellyChecker : MonoBehaviour
     }
     private void AddForce(Vector3 pos,Vector3 dir,float force)
     {
-        Debug.Log($"Bingo:{transform.name}");
+       // Debug.Log($"Bingo:{transform.name}");
         Vector4 posAndForce = new Vector4(pos.x, pos.y, pos.z, force);
         Vector4 dirAndTime = new Vector4(dir.x, dir.y, dir.z, Time.time);
         EnQueue(posAndForce, dirAndTime);
@@ -121,7 +121,7 @@ public class JellyChecker : MonoBehaviour
         }
 
     }
-    public bool HitEffect()
+    public RaycastHit HitEffect()
     {
         ray = new Ray(checker.transform.position, dir);
 
@@ -146,6 +146,6 @@ public class JellyChecker : MonoBehaviour
             line.SetPosition(0, checker.transform.position);
             line.SetPosition(1, checker.transform.position + dir * rayDistance);
         }
-        return hit.collider;
+        return hit;
     }
 }

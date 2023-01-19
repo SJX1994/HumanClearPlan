@@ -46,7 +46,7 @@ public class GhostRecorder : MonoBehaviour
             isRecording = true;
             OnRecordingStart();
 
-            Debug.LogFormat("Recording of {0} started", gameObject.name);
+           // Debug.LogFormat("Recording of {0} started", gameObject.name);
         }
     }
 
@@ -59,7 +59,7 @@ public class GhostRecorder : MonoBehaviour
             isRecording = false;
             OnRecordingEnd();
 
-            Debug.LogFormat("Recording of {0} ended at frame {1}", gameObject.name, recordIndex);
+           // Debug.LogFormat("Recording of {0} ended at frame {1}", gameObject.name, recordIndex);
         }
     }
 
